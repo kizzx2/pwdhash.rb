@@ -1,5 +1,5 @@
 require 'test/unit'
-require File.dirname(__FILE__) + '/pwdhash'
+require File.join(File.dirname(__FILE__), 'pwdhash')
 
 class PwdHashTest < Test::Unit::TestCase
   
