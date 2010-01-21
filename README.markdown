@@ -16,7 +16,7 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
 
 ## What is PwdHash?
 
-[Standford PwdHash][stanford-pwdhash] helps you create theft-resistant passwords for each realm (domain name). In the case that your email password gets stolen, the attacker won't be able to log in your PayPal account to transfer all your money, even though you only have to remember one password for all logins. The [USENIX Security Symposium 2005 paper][paper](PDF) explains it in details.
+[Standford PwdHash][stanford-pwdhash] helps you create theft-resistant passwords for each realm (domain name). In the case that your email password gets stolen, the attacker won't be able to log in your PayPal account to transfer all your money, even though you only have to remember one password for all logins. The [USENIX Security Symposium 2005 paper][enix-paper] (PDF) explains it in details.
 
 ## Example/Usage
 
@@ -32,3 +32,7 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
 The library part of this tool is a *straight* copy of [Chris Roos' implementation][chris-roos-impl]. The reason this git repository is set up is because: a) Chris Roos decided to put the code in an obscure corner in a pile of code which makes it hard for people to find and b) GitHub uses git :p
 
 The PwdHash plugin and the PwdHash algorithm is contributed by [Stanford PwdHash][stanford-pwdhash].
+
+[chris-roos-impl]: http://chrisroos.co.uk/blog/2007-04-11-getting-to-grips-with-pwdhash
+[stanford-pwdhash]: http://pwdhash.com
+[enix-paper]: http://crypto.stanford.edu/PwdHash/pwdhash.pdf
