@@ -18,6 +18,11 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
 
 [Standford PwdHash][stanford-pwdhash] helps you create theft-resistant passwords for each realm (domain name). In the case that your email password gets stolen, the attacker won't be able to log in your PayPal account to transfer all your money, even though you only have to remember one password for all logins. The [USENIX Security Symposium 2005 paper][enix-paper] (PDF) explains it in details.
 
+## Installation/Requirements
+
+    $ gem install highline
+    $ gem install ruby-hmac
+
 ## Example/Usage
 
     $ pwdhash google.com
