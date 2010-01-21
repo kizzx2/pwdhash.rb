@@ -4,7 +4,7 @@ require 'rubygems'
 require 'highline/import'
 require 'pathname'
 
-require File.join(Pathname.new($0).realpath, 'pwdhash')
+require File.join(File.dirname(Pathname.new($0).realpath), 'pwdhash')
 
 def usage
     puts "Usage: pwdhash REALM"
