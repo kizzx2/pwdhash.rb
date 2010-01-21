@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline/import'
+
+require File.join(File.dirname(__FILE__), 'pwdhash')
+
+def usage
+    puts "Usage: pwdhash REALM"
+    exit
+end
+
+usage if ARGV.length != 1
+
+realm = ARGV[0].chomp
+
+hl = HighLine.new($stdin, $stderr)
+password = hl.ask("Password for #{realm}: "){ |q| q.echo = false }
+
+puts get_hashed_password(password, realm)
