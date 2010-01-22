@@ -10,7 +10,7 @@ PwdHash was written as a browser plugin, but sometimes we'd like to extend its u
 
 This tool is essentially a *straight* copy of [Chris Roos' implementation][chris-roos-impl], with a couple of command line interface improvements:
 
-1. The password doesn't show clearly on the screen when the user is typing.
+1. The password is marked properly when the user is typing it.
 2. The realm is specified as an argument instead of prompted.
 3. The prompt text is sent to STDERR instead of STDOUT so the output can be piped e.g. `xclip` or `putclip`.
 
