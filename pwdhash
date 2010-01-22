@@ -6,9 +6,16 @@ require 'pathname'
 
 require File.join(File.dirname(Pathname.new($0).realpath), 'pwdhash')
 
+VERSION_FILE = File.join(File.dirname(Pathname.new($0).realpath), "VERSION")
+
 def usage
+    puts "pwdhash.rb #{version} - Chris Yuen, Chris Roos (2010)"
     puts "Usage: pwdhash REALM"
     exit
+end
+
+def version
+    open(VERSION_FILE).read.chomp
 end
 
 usage if ARGV.length != 1
