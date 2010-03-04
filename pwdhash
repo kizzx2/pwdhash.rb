@@ -25,4 +25,4 @@ realm = ARGV[0].chomp
 hl = HighLine.new($stdin, $stderr)
 password = hl.ask("Password for #{realm}: "){ |q| q.echo = false }
 
-puts get_hashed_password(password, realm)
+print get_hashed_password(password, realm)
