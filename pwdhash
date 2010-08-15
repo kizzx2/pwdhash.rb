@@ -5,12 +5,14 @@ require 'highline/import'
 require 'pathname'
 
 require File.join(File.dirname(Pathname.new($0).realpath), 'pwdhash')
+require File.join(File.dirname(Pathname.new($0).realpath), 'extract_domain')
 
 VERSION_FILE = File.join(File.dirname(Pathname.new($0).realpath), "VERSION")
 
 def usage
     puts "pwdhash.rb #{version} - Chris Yuen, Chris Roos (2010)"
-    puts "Usage: pwdhash REALM"
+    puts "Usage: pwdhash URI"
+    puts "Example: pwdhash https://mail.google.com"
     exit
 end
 
@@ -20,7 +22,7 @@ end
 
 usage if ARGV.length != 1
 
-realm = ARGV[0].chomp
+realm = extract_domain(ARGV[0].chomp)
 
 hl = HighLine.new($stdin, $stderr)
 password = hl.ask("Password for #{realm}: "){ |q| q.echo = false }
