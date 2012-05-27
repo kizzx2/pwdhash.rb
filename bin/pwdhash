@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline/import'
+require 'pathname'
+
+require 'pwdhash/pwdhash'
+require 'pwdhash/extract_domain'
+
+def usage
+    puts "pwdhash.rb #{PwdHash::VERSION} - Chris Yuen, Chris Roos (2012)"
+    puts "Usage: pwdhash URI"
+    puts "Example: pwdhash https://mail.google.com"
+    exit
+end
+
+usage if ARGV.length != 1
+
+realm = extract_domain(ARGV[0].chomp)
+
+hl = HighLine.new($stdin, $stderr)
+password = hl.ask("Password for #{realm}: ") {|q| q.echo = false}
+
+print get_hashed_password(password, realm)
