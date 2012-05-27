@@ -12,7 +12,7 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
 
 1. The password is masked properly when the user is typing it.
 2. The realm is specified as an argument instead of prompted.
-3. The prompt text is sent to STDERR instead of STDOUT so the output can be piped e.g. `xclip` or `putclip`.
+3. The prompt text is sent to STDOUT instead of STDERR so the output can be piped to e.g. `xclip` or `putclip`.
 
 ## What is PwdHash?
 
