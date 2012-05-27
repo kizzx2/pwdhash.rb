@@ -9,7 +9,7 @@ def next_extra(extras)
 end
 
 def rotate(array, amount)
-  amount.downto(1) { array.push(array.shift) }
+  amount.ord.downto(1) { array.push(array.shift) }
 end
 
 def between(min, interval, offset)
@@ -38,6 +38,7 @@ def apply_constraints(hash, size, nonalphanumeric)
   while (contains(result, /\W/) && !nonalphanumeric) do
     result = result.sub(/\W/, next_between('A', 26, extras))
   end
+  
   
   # Rotate the result to make it harder to guess the inserted locations
   result = result.split('')

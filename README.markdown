@@ -16,21 +16,22 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
 
 ## What is PwdHash?
 
-[Standford PwdHash][stanford-pwdhash] helps you create theft-resistant passwords for each realm (domain name). In the case that your email password gets stolen, the attacker won't be able to log in your PayPal account to transfer all your money, even though you only have to remember one password for all logins. The [USENIX Security Symposium 2005 paper][enix-paper] (PDF) explains it in details.
+[Standford PwdHash][stanford-pwdhash] helps you create theft-resistant passwords for each realm (domain name). In the case that your email password gets stolen, the attacker won't be able to log in your PayPal account to transfer all your money, even though you only have to remember one password for all logins. The [USENIX Security Symposium 2005 paper][usenix-paper] (PDF) explains it in details.
 
-## Requirements
+## Installation
 
-    $ gem install highline
-    $ gem install ruby-hmac
+    gem install pwdhash
 
 ## Example/Usage
 
-    $ pwdhash google.com
-    Password for google.com:
+    $ pwdhash example.com
+    Password for example.com:
     5NBoCKraALBs
 
-    $ pwdhash google.com | xcilp # Put generated password to X clipboard
-    $ pwdhash google.com | putclip # Or in cygwin
+    $ pwdhash example.com | xcilp # Put generated password to X clipboard
+    $ pwdhash example.com | pbcopy # Or in OS X
+    > pwdhash example.com | clip # Or in Windows
+    $ pwdhash example.com | putclip # Or in Cygwin
 
 ## Attribution
 
@@ -40,4 +41,4 @@ The PwdHash plugin and the PwdHash algorithm is contributed by [Stanford PwdHash
 
 [chris-roos-impl]: http://chrisroos.co.uk/blog/2007-04-11-getting-to-grips-with-pwdhash
 [stanford-pwdhash]: http://pwdhash.com
-[enix-paper]: http://crypto.stanford.edu/PwdHash/pwdhash.pdf
+[usenix-paper]: http://crypto.stanford.edu/PwdHash/pwdhash.pdf
