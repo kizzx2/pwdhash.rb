@@ -13,7 +13,7 @@ def rotate(array, amount)
 end
 
 def between(min, interval, offset)
-  min + offset % interval
+  (min.ord + offset.ord % interval).chr
 end
 
 def next_between(base, interval, extras)
