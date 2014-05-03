@@ -28,7 +28,7 @@ end
 def apply_constraints(hash, size, nonalphanumeric)
   startingSize = size - 4 # Leave room for some extra characters
   result = hash[0, startingSize]
-  extras = hash[startingSize, hash.length].split('')
+  extras = (hash[startingSize, hash.length] || "").split('')
   
   # Add the extra characters
   result += (contains(result, /[A-Z]/) ? next_extra_character(extras) : next_between('A', 26, extras))
