@@ -7,6 +7,9 @@ Gem::Specification.new do |gem|
   gem.description   = "Command line version of Stanford PwdHash"
   gem.summary       = "Command line version of Stanford PwdHash"
 
+  gem.licenses      = ['GPL-3.0']
+  gem.homepage      = 'https://github.com/kizzx2/pwdhash.rb'
+
   gem.test_files    = ['pwdhash_test.rb']
 
   gem.files         = `git ls-files`.split($\)
@@ -16,6 +19,6 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = PwdHash::VERSION
 
-  gem.add_dependency('highline', '>= 1.6.12')
-  gem.add_dependency('ruby-hmac', '>= 0.4.0')
+  gem.add_dependency('highline', '~> 1.6', '>= 1.6.12')
+  gem.add_dependency('ruby-hmac', '~> 0.4', '>= 0.4.0')
 end
