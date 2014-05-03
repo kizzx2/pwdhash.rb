@@ -65,7 +65,7 @@ module PwdHash
     end
   private
     def hash!
-      @hash = Base64.encode64(HMAC::MD5.digest(@password, @realm))
+      @hash = Base64.encode64(HMAC::MD5.digest(@password, @realm)).strip
     end
     def remove_base64_pad_character
       @hash.sub!(/=+$/, '')
