@@ -8,6 +8,8 @@ require 'pwdhash/pwdhash'
 require 'pwdhash/extract_domain'
 require 'pwdhash/version'
 
+require 'backports'
+
 def usage
     puts "pwdhash.rb #{PwdHash::VERSION} - Chris Yuen, Chris Roos (2012)"
     puts "Usage: pwdhash URI"

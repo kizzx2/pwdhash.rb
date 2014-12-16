@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency('highline', '~> 1.6', '>= 1.6.12')
   gem.add_dependency('ruby-hmac', '~> 0.4', '>= 0.4.0')
+  gem.add_dependency('backports', '~> 3.6', '>= 3.6.4')
 end
