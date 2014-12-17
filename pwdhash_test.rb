@@ -1,10 +1,11 @@
+require 'minitest'
 require 'minitest/unit'
 require 'minitest/pride'
 require 'minitest/autorun'
 
 require './lib/pwdhash/pwdhash'
 
-class PwdHashTest < MiniTest::Unit::TestCase
+class PwdHashTest < Minitest::Test
   def test_passwords
     [
       ['v0F0B', 'foo', 'skype.com'],
