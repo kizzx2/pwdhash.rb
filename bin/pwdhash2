@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline/import'
+require 'pathname'
+
+require 'pwdhash/pwdhash'
+require 'pwdhash/extract_domain'
+require 'pwdhash/version'
+
+require 'backports'
+
+def usage
+  puts "pwdhash.rb #{PwdHash::VERSION} - Chris Yuen, Chris Roos (2012)"
+  puts "Usage: pwdhash2 URI [SALT] [ITERATIONS]"
+  puts "Example: pwdhash2 https://mail.google.com"
+  puts "Example: pwdhash2 https://mail.google.com SomeSalt"
+  puts "Example: pwdhash2 https://mail.google.com SomeSalt 10_000"
+  puts
+  puts "SALT       can also be defined in PWDHASH2_SALT environment variable."
+  puts "ITERATIONS can also be defined in PWDHASH2_ITERATIONS environment variable."
+  exit
+end
+
+usage if ARGV.length == 0
+
+realm = extract_domain(ARGV[0])
+
+salt = ARGV[1] || ENV['PWDHASH2_SALT']
+iterations = (ARGV[2] || ENV['PWDHASH2_ITERATIONS'] || 50_000).to_i
+
+hl = HighLine.new($stdin, $stderr)
+password = hl.ask("Password for #{realm} (salt = '#{salt}', iterations = #{iterations}): ") {|q| q.echo = false}
+
+print get_hashed_password2(password, realm, salt, iterations)
