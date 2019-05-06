@@ -45,8 +45,20 @@ class PwdHash2Test < Minitest::Test
     end
   end
 
+  def test_collisions_with_weak_passwords
+    # => Use a longer password!
+    [
+      ['foo', 1000, 'bar', 'https://manifolds.org', 'https://boxwoods.com'],
+      ['foo', 50_000, 'aYcErTYgi0AoB2tDbP80fwR5GAWwUvg8', 'http://dainty.co.uk', 'http://polemic.com'],
+      ['foobar', 100, 'salt', 'https://abounds.edu.au', 'https://coaxed.co.nz'],
+    ].each do |password, iterations, salt, url1, url2|
+      assert_equal get_hashed_password2(password, extract_domain(url1), salt, iterations),
+        get_hashed_password2(password, extract_domain(url2), salt, iterations)
+    end
+  end
+
   def test_edge_cases
-    # For testing only! Please always define salt and password. Number of iterations shouldn't be too low.
+    # For testing only! Please always define salt and password. Number of iterations shouldn't be too low and password should be long enough.
     [
       ['WWNEC9x1', 'foobar', 1000, '', 'https://google.com'],
       ['EBr2', '', 1000, '', 'https://google.com'],
