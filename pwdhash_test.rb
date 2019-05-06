@@ -40,7 +40,14 @@ class PwdHash2Test < Minitest::Test
       ['r8oIM4CR', 'foobar', 1, 'ChangeMe', 'https://google.com'],
       ['3PvCifzNoYaTNBMcJzVvDfDBeVK', 'correcthorsebatterystaple', 50000, 'COVwVNWVhwCsd7vlQ2T5BuIJBccYCu1RzR8rQFVHYVkGVQkZXHLkglnttWFQJYIN', 'https://about.google/intl/en/?fg=1&utm_source=google-EN&utm_medium=referral&utm_campaign=hp-header'],
       ['APC8mNJI', 'foobar', 1000, 'ChangeMe', 'https://google.com'],
-      # Edge cases, for testing only! Please always define salt and password. Number of iterations shouldn't be too low.
+    ].each do |expected, password, iterations, salt, url|
+      assert_equal expected, get_hashed_password2(password, extract_domain(url), salt, iterations)
+    end
+  end
+
+  def test_edge_cases
+    # For testing only! Please always define salt and password. Number of iterations shouldn't be too low.
+    [
       ['WWNEC9x1', 'foobar', 1000, '', 'https://google.com'],
       ['EBr2', '', 1000, '', 'https://google.com'],
       ['w0WD', '', 1, '', 'https://google.com'],
