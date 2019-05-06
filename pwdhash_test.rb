@@ -31,3 +31,15 @@ class PwdHashTest < Minitest::Test
     end
   end
 end
+
+class PwdHash2Test < Minitest::Test
+  def test_passwords_with_complete_urls
+    # expected results calculated with https://gwuk.github.io/PwdHash2/pwdhash2/
+    [
+      ['r8oIM4CR', 'foobar', 1, 'ChangeMe', 'https://google.com'],
+      ['APC8mNJI', 'foobar', 1000, 'ChangeMe', 'https://google.com'],
+    ].each do |expected, password, iterations, salt, url|
+      assert_equal expected, get_hashed_password2(password, iterations, salt, extract_domain(url))
+    end
+  end
+end
