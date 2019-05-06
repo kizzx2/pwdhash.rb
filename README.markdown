@@ -28,7 +28,8 @@ This tool is essentially a *straight* copy of [Chris Roos' implementation][chris
     Password for example.com:
     5NBoCKraALBs
 
-    $ pwdhash example.com | xclip # Put generated password to X clipboard
+    $ pwdhash example.com | xclip # Put generated password to X clipboard (paste with middle-click)
+    $ pwdhash example.com | xclip -selection c # Put generated password to X clipboard (paste with CTRL+V)
     $ pwdhash example.com | pbcopy # Or in OS X
     > pwdhash example.com | clip # Or in Windows
     $ pwdhash example.com | putclip # Or in Cygwin
