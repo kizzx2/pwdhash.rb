@@ -48,6 +48,7 @@ end
 
 require 'hmac-md5'
 require 'base64'
+require 'openssl'
 
 module PwdHash
   class Hash
@@ -71,10 +72,31 @@ module PwdHash
       @hash.sub!(/=+$/, '')
     end
   end
+
+  class Hash2 < Hash
+    DIGEST = OpenSSL::Digest::SHA256.new
+
+    def initialize(realm, password, salt, iterations)
+      @salt, @iterations = salt, iterations
+      super(realm, password)
+    end
+
+    private
+
+    def hash!
+      # Based on https://github.com/GWuk/PwdHash2/blob/gh-pages/pwdhash2/hashed-password.js#L44
+      @hash = Base64.encode64(OpenSSL::PKCS5.pbkdf2_hmac([@password , @salt].join, @realm, @iterations, (2 * size / 3) + 16, DIGEST))
+    end
+  end
 end
 
 def get_hashed_password(password, realm)
   hash = PwdHash::Hash.new(realm, password)
+  apply_constraints(hash.hash, hash.size, hash.contains_non_alphanumeric?)
+end
+
+def get_hashed_password2(password, realm, salt, iterations)
+  hash = PwdHash::Hash2.new(realm, password, salt, iterations)
   apply_constraints(hash.hash, hash.size, hash.contains_non_alphanumeric?)
 end
 
