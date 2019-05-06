@@ -26,7 +26,7 @@ def contains(result, regex)
 end
 
 def apply_constraints(hash, size, nonalphanumeric)
-  startingSize = size - 4 # Leave room for some extra characters
+  startingSize = [size - 4, 0].max # Leave room for some extra characters
   result = hash[0, startingSize]
   extras = (hash[startingSize, hash.length] || "").split('')
   
