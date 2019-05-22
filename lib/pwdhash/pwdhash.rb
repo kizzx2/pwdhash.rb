@@ -46,7 +46,6 @@ def apply_constraints(hash, size, nonalphanumeric)
   return result.join('')
 end
 
-require 'hmac-md5'
 require 'base64'
 require 'openssl'
 
@@ -66,7 +65,7 @@ module PwdHash
     end
   private
     def hash!
-      @hash = Base64.encode64(HMAC::MD5.digest(@password, @realm)).strip
+      @hash = Base64.encode64(OpenSSL::HMAC.digest("MD5", @password, @realm)).strip
     end
     def remove_base64_pad_character
       @hash.sub!(/=+$/, '')
