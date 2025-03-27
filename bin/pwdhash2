@@ -28,7 +28,7 @@ salt = ARGV[1] || ENV['PWDHASH2_SALT']
 iterations = (ARGV[2] || ENV['PWDHASH2_ITERATIONS'] || 50_000).to_i
 
 hl = HighLine.new($stdin, $stderr)
-hl.say("WARNING: Empty salt!") if salt.empty?
+hl.say("WARNING: Empty salt!") if salt.nil? or salt.empty?
 password = hl.ask("Password for #{realm} (salt = '#{salt}', iterations = #{iterations}): ") {|q| q.echo = false}
 
 print get_hashed_password2(password, realm, salt, iterations)
