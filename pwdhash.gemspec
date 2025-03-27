@@ -19,5 +19,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = PwdHash::VERSION
 
-  gem.add_dependency('highline', '~> 1.6', '>= 1.6.12')
+  gem.add_dependency('highline', '~> 3.1.2')
 end
